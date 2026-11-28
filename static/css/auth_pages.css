@@ -1,0 +1,81 @@
+body.phyto-auth-page {
+    display: flex;
+    min-height: 100vh;
+    align-items: center;
+    justify-content: center;
+    background: #f1f3ea !important;
+    color: #202a24;
+    font-family: 'DM Sans', sans-serif;
+}
+
+.phyto-auth-page .container {
+    height: auto;
+    min-height: 100vh;
+    padding: 28px 16px;
+}
+
+.phyto-auth-page .card {
+    width: 420px;
+    max-width: calc(100vw - 32px);
+    padding: 32px !important;
+    border: 1px solid #d6ddd2;
+    border-radius: 16px !important;
+    background: #fff;
+    box-shadow: 0 12px 34px rgba(35, 55, 43, 0.07) !important;
+}
+
+.phyto-auth-page h3 {
+    color: #202a24;
+    font-family: 'Newsreader', Georgia, serif;
+    font-size: 30px;
+    font-weight: 500 !important;
+    letter-spacing: -0.035em;
+}
+
+.phyto-auth-page .form-label {
+    color: #39483e;
+    font-size: 13px;
+}
+
+.phyto-auth-page .form-control {
+    min-height: 46px;
+    border: 1px solid #d6ddd2;
+    border-radius: 9px;
+    background: #fbfcf8;
+    color: #202a24;
+    font-family: 'DM Sans', sans-serif;
+}
+
+.phyto-auth-page .form-control:focus {
+    border-color: #245b43;
+    box-shadow: 0 0 0 3px rgba(36, 91, 67, 0.14);
+}
+
+.phyto-auth-page .btn-success {
+    min-height: 46px;
+    border: 1px solid #245b43;
+    border-radius: 9px !important;
+    background: #245b43;
+    font-size: 14px;
+}
+
+.phyto-auth-page .btn-success:hover,
+.phyto-auth-page .btn-success:focus {
+    border-color: #183e2e;
+    background: #183e2e;
+}
+
+.phyto-auth-page a {
+    color: #245b43;
+    font-weight: 600;
+}
+
+.phyto-auth-page a:hover {
+    color: #183e2e;
+}
+
+@media (max-width: 480px) {
+    .phyto-auth-page .card {
+        padding: 24px !important;
+    }
+}

@@ -1,0 +1,199 @@
+{% extends "base.html" %}
+
+{% block title %}PhytoSync — Plant health, field by field{% endblock %}
+{% block body_class %}landing-body{% endblock %}
+
+{% block css %}
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="{{ url_for('static', filename='css/home_page_style.css') }}">
+{% endblock %}
+
+{% block nav_links %}
+<ul class="landing-nav hidden md:flex items-center">
+    <li><a href="#hero">Home</a></li>
+    <li><a href="#about">About</a></li>
+    <li><a href="#workflow">How it works</a></li>
+    <li><a href="#services">Get started</a></li>
+</ul>
+{% endblock %}
+
+{% block mobile_nav_links %}
+<a href="#hero" class="landing-mobile-link">Home</a>
+<a href="#about" class="landing-mobile-link">About</a>
+<a href="#workflow" class="landing-mobile-link">How it works</a>
+<a href="#services" class="landing-mobile-link">Get started</a>
+{% endblock %}
+
+{% block content %}
+<main id="landing-page">
+    <section id="hero" class="field-hero scroll-mt-24" aria-labelledby="hero-title">
+        <div class="field-hero__inner">
+            <div class="field-hero__copy">
+                <p class="field-kicker">Plant health, field by field</p>
+                <h1 id="hero-title">Know your crop.<br>Plan your next move.</h1>
+                <p class="field-hero__summary">
+                    Check leaf images, explore crop and irrigation guidance, and keep field
+                    observations together in one practical workspace.
+                </p>
+                <div class="field-hero__actions">
+                    <a class="field-button field-button--dark" href="#about">Explore features</a>
+                    <a class="field-text-link" href="{{ url_for('login') }}">Sign in <span aria-hidden="true">↗</span></a>
+                </div>
+                <p class="field-hero__note">Built for better-informed decisions, not guesswork.</p>
+            </div>
+
+            <figure class="field-hero__media">
+                <img
+                    class="field-hero__image"
+                    src="{{ url_for('static', filename='images/Yellow-leaf-spot-wheat.jpg') }}"
+                    alt="Close view of a wheat leaf with visible brown spots"
+                    fetchpriority="high">
+                <figcaption class="field-hero__caption">
+                    <span class="field-hero__caption-mark" aria-hidden="true">
+                        <i data-lucide="scan-eye"></i>
+                    </span>
+                    <span>
+                        <strong>Start with what you can see</strong>
+                        <span>Pair a leaf image with the conditions around it.</span>
+                    </span>
+                </figcaption>
+                <span class="field-hero__image-label">A closer look at plant health</span>
+            </figure>
+
+            <div class="field-hero__feature-strip" aria-label="PhytoSync tools at a glance">
+                <div class="field-hero-feature">
+                    <span class="field-hero-feature__icon" aria-hidden="true"><i data-lucide="scan-eye"></i></span>
+                    <span><strong>Leaf health</strong><span>Check a leaf image</span></span>
+                </div>
+                <div class="field-hero-feature">
+                    <span class="field-hero-feature__icon" aria-hidden="true"><i data-lucide="sprout"></i></span>
+                    <span><strong>Crop and water</strong><span>Plan with field conditions</span></span>
+                </div>
+                <div class="field-hero-feature">
+                    <span class="field-hero-feature__icon" aria-hidden="true"><i data-lucide="clipboard-list"></i></span>
+                    <span><strong>Farm records</strong><span>Keep observations together</span></span>
+                </div>
+                <div class="field-hero-feature">
+                    <span class="field-hero-feature__icon" aria-hidden="true"><i data-lucide="messages-square"></i></span>
+                    <span><strong>Grower support</strong><span>Ask, share and learn</span></span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="about" class="field-about scroll-mt-24" aria-labelledby="about-title">
+        <div class="field-about__inner">
+            <header class="field-about__heading">
+                <div>
+                    <p class="field-kicker">One workspace for the field</p>
+                    <h2 id="about-title">From the first leaf check to the next field decision.</h2>
+                </div>
+                <div class="field-about__intro">
+                    <p>
+                        PhytoSync brings plant-health checks, crop and irrigation guidance,
+                        farm records and grower support together—so the useful context stays close.
+                    </p>
+                    <a href="#workflow">See how it works <span aria-hidden="true">↘</span></a>
+                </div>
+            </header>
+
+            <div class="field-about__features">
+                <article class="field-about-feature">
+                    <span class="field-about-feature__icon" aria-hidden="true"><i data-lucide="scan-eye"></i></span>
+                    <div>
+                        <h3>Leaf image diagnosis</h3>
+                        <p>Review likely disease labels, confidence and alternatives.</p>
+                    </div>
+                </article>
+                <article class="field-about-feature">
+                    <span class="field-about-feature__icon" aria-hidden="true"><i data-lucide="sprout"></i></span>
+                    <div>
+                        <h3>Crop recommendations</h3>
+                        <p>Compare crop options with soil nutrients, pH and climate inputs.</p>
+                    </div>
+                </article>
+                <article class="field-about-feature">
+                    <span class="field-about-feature__icon" aria-hidden="true"><i data-lucide="droplets"></i></span>
+                    <div>
+                        <h3>Irrigation guidance</h3>
+                        <p>Review water advice alongside the conditions you provide.</p>
+                    </div>
+                </article>
+                <article class="field-about-feature">
+                    <span class="field-about-feature__icon" aria-hidden="true"><i data-lucide="clipboard-list"></i></span>
+                    <div>
+                        <h3>Farm and crop records</h3>
+                        <p>Keep farm details, growth notes and observations together.</p>
+                    </div>
+                </article>
+                <article class="field-about-feature">
+                    <span class="field-about-feature__icon" aria-hidden="true"><i data-lucide="users-round"></i></span>
+                    <div>
+                        <h3>Grower community</h3>
+                        <p>Share experience and learn from other people growing crops.</p>
+                    </div>
+                </article>
+                <article class="field-about-feature">
+                    <span class="field-about-feature__icon" aria-hidden="true"><i data-lucide="messages-square"></i></span>
+                    <div>
+                        <h3>AI field assistant</h3>
+                        <p>Ask farming questions and explore a practical next step.</p>
+                    </div>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <section id="workflow" class="field-workflow scroll-mt-24" aria-labelledby="workflow-title">
+        <div class="field-section-heading">
+            <div>
+                <p class="field-kicker">A clearer field routine</p>
+                <h2 id="workflow-title">Keep the evidence<br>close to the decision.</h2>
+            </div>
+            <p>
+                PhytoSync brings crop checks and farm records into the same flow,
+                so you can see what informed each next step.
+            </p>
+        </div>
+
+        <ol class="field-workflow__steps">
+            <li>
+                <span class="field-workflow__icon" aria-hidden="true"><i data-lucide="camera"></i></span>
+                <span class="field-workflow__title">Capture</span>
+                <span class="field-workflow__text">Add a leaf image or field observation.</span>
+            </li>
+            <li>
+                <span class="field-workflow__icon" aria-hidden="true"><i data-lucide="scan-search"></i></span>
+                <span class="field-workflow__title">Review</span>
+                <span class="field-workflow__text">See likely results, confidence and alternatives.</span>
+            </li>
+            <li>
+                <span class="field-workflow__icon" aria-hidden="true"><i data-lucide="sprout"></i></span>
+                <span class="field-workflow__title">Plan</span>
+                <span class="field-workflow__text">Use crop, soil and climate inputs for guidance.</span>
+            </li>
+            <li>
+                <span class="field-workflow__icon" aria-hidden="true"><i data-lucide="book-open-check"></i></span>
+                <span class="field-workflow__title">Track</span>
+                <span class="field-workflow__text">Keep observations with your farm history.</span>
+            </li>
+        </ol>
+    </section>
+
+    <section id="services" class="field-tools scroll-mt-24" aria-labelledby="tools-title">
+        <div class="field-start__inner">
+            <div>
+                <p class="field-kicker">Ready when you are</p>
+                <h2 id="tools-title">Bring your next field question.</h2>
+                <p>Start with a leaf image, soil reading or field note. Keep the useful context together.</p>
+            </div>
+            <a class="field-button field-button--dark" href="{{ url_for('login') }}">
+                Enter your workspace <span aria-hidden="true">↗</span>
+            </a>
+        </div>
+    </section>
+
+
+</main>
+{% endblock %}

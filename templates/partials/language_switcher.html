@@ -1,0 +1,10 @@
+<form class="language-switcher {{ switcher_class|default('') }}" method="post"
+    action="{{ url_for('set_language') }}"
+    role="group" aria-label="{{ 'اختر اللغة' if site_language == 'ar' else 'Choose language' }}">
+    <button class="language-switcher__option" type="submit" name="language" value="en"
+        aria-label="{{ 'الإنجليزية' if site_language == 'ar' else 'English' }}"
+        aria-pressed="{{ 'true' if site_language == 'en' else 'false' }}">EN</button>
+    <button class="language-switcher__option" type="submit" name="language" value="ar"
+        aria-label="{{ 'العربية' if site_language == 'ar' else 'Arabic' }}"
+        aria-pressed="{{ 'true' if site_language == 'ar' else 'false' }}">AR</button>
+</form>

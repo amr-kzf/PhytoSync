@@ -1,0 +1,66 @@
+.profile-page {
+    max-width: 1020px;
+}
+
+.profile-page__header {
+    background: #f8f9f3 !important;
+    border-color: var(--phyto-line) !important;
+    border-radius: 16px !important;
+    box-shadow: var(--phyto-shadow) !important;
+}
+
+.profile-page__header h1 {
+    font-size: clamp(2rem, 3vw, 2.375rem) !important;
+    line-height: 1.04;
+}
+
+/* Avatar */
+.avatar {
+    width: 56px;
+    height: 56px;
+    background: #fff;
+    border-radius: 50%;
+}
+
+.progress-sm {
+    height: 6px;
+}
+
+.profile-page .bg-indigo-50,
+.profile-page .bg-indigo-100 {
+    background-color: var(--phyto-green-soft) !important;
+}
+
+.profile-page .text-indigo-400,
+.profile-page .text-indigo-500,
+.profile-page .text-indigo-600,
+.profile-page .text-indigo-900 {
+    color: var(--phyto-green) !important;
+}
+
+.profile-page .from-indigo-500\/5 {
+    --tw-gradient-from: rgb(36 91 67 / 0.05) var(--tw-gradient-from-position) !important;
+    --tw-gradient-to: rgb(36 91 67 / 0) var(--tw-gradient-to-position) !important;
+}
+
+.profile-page .bg-blue-50 {
+    background-color: #edf2f6 !important;
+}
+
+.profile-page .text-blue-600 {
+    color: var(--phyto-blue) !important;
+}
+
+.profile-page .grid.grid-cols-3 {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+@media (max-width: 576px) {
+    .profile-page .grid.grid-cols-3 {
+        gap: 8px;
+    }
+
+    .profile-page__header {
+        padding: 22px !important;
+    }
+}

@@ -1,0 +1,60 @@
+body.login-page {
+    background: #f1f3ea;
+    color: #202a24;
+}
+
+.login-page .auth-card {
+    border-color: #d6ddd2;
+    border-radius: 18px !important;
+    background: #fbfcf8;
+    box-shadow: 0 16px 42px rgba(35, 55, 43, 0.08) !important;
+}
+
+.login-page .auth-card > div:first-child {
+    height: 4px;
+    background: #245b43;
+}
+
+.login-page .auth-card h2 {
+    font-family: 'Newsreader', Georgia, serif;
+    font-size: 34px;
+    font-weight: 500;
+    letter-spacing: -0.035em;
+}
+
+.login-page .auth-card input {
+    font-family: 'DM Sans', sans-serif;
+}
+
+.login-page .auth-card input:focus {
+    outline: none;
+    box-shadow: none;
+}
+
+.login-page .active-tab {
+    color: #245b43 !important;
+    box-shadow: 0 2px 5px rgba(35, 55, 43, 0.08);
+}
+
+.login-page a:focus-visible,
+.login-page button:focus-visible,
+.login-page input:focus-visible {
+    outline: 3px solid rgba(63, 116, 89, 0.55);
+    outline-offset: 3px;
+}
+
+@media (max-width: 540px) {
+    .login-page .auth-card {
+        padding: 26px 20px !important;
+    }
+
+    .login-page .auth-card h2 {
+        font-size: 29px;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .login-page .transition-all {
+        transition: none !important;
+    }
+}

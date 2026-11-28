@@ -1,0 +1,23 @@
+<style>
+    html[dir="rtl"] body {
+        direction: rtl;
+        text-align: right;
+        font-family: "Noto Sans Arabic", Tahoma, sans-serif;
+    }
+
+    html[dir="rtl"] .text-left {
+        text-align: right !important;
+    }
+
+    html[dir="rtl"] .absolute.left-6 {
+        left: auto;
+        right: 1.5rem;
+    }
+
+    html[dir="rtl"] input:not([type="email"]):not([type="number"]):not([type="date"]) {
+        text-align: right;
+    }
+</style>
+{% with switcher_class='language-switcher--fixed' %}
+    {% include "partials/language_switcher.html" %}
+{% endwith %}

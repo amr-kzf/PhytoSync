@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="{{ site_language }}" dir="{{ 'rtl' if site_language == 'ar' else 'ltr' }}">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ translate("PhytoSync Crop Recommendation Report") }}</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            color: #1b3025;
+            line-height: 1.5;
+            margin: 0;
+            padding: 20px;
+            direction: {{ "rtl" if site_language == "ar" else "ltr" }};
+        }
+
+        /* Utility Classes */
+        .text-center { text-align: center; }
+        .text-success { color: #286543; }
+        .text-muted { color: #5d6e62; }
+        .fw-bold { font-weight: 700; }
+        .mb-3 { margin-bottom: 1rem; }
+        .mt-4 { margin-top: 1.5rem; }
+        .py-3 { padding-top: 1rem; padding-bottom: 1rem; }
+        .d-block { display: block; }
+        .fs-5 { font-size: 1.25rem; }
+
+        /* Header */
+        .report-header {
+            border-bottom: 3px solid #286543;
+            padding-bottom: 20px;
+            margin-bottom: 30px;
+        }
+
+        /* Section Titles */
+        .section-title {
+            font-size: 1.25rem;
+            color: #1b3025;
+            border-inline-start: 5px solid #286543;
+            padding-inline-start: 15px;
+            margin-top: 30px;
+            margin-bottom: 20px;
+        }
+
+        /* Prediction Hero Box */
+        .prediction-box {
+            background-color: #f1f6ef;
+            border: 1px solid #cbdcc9;
+            border-radius: 12px;
+            padding: 25px;
+        }
+        .crop-title {
+            font-size: 2.5rem;
+            margin: 10px 0;
+            color: #19412f;
+            text-transform: capitalize;
+        }
+
+        /* Data Tables */
+        .data-table {
+            width: 100%;
+            margin-bottom: 20px;
+        }
+        .data-table th, .data-table td {
+            padding: 12px;
+            border-bottom: 1px solid #d7e1d5;
+            text-align: start;
+        }
+        .data-table th {
+            color: #405347;
+            width: 40%;
+        }
+        .data-table td {
+            font-weight: 600;
+        }
+
+        /* Fertilizer List */
+        .fert-list {
+            list-style-type: none;
+            padding-inline-start: 0;
+        }
+        .fert-list li {
+            background-color: #e5eee2;
+            border: 1px solid #d7e1d5;
+            padding: 12px 15px;
+            margin-bottom: 10px;
+            border-radius: 8px;
+        }
+
+        /* Footer */
+        .footer {
+            margin-top: 50px;
+            padding-top: 20px;
+            border-top: 1px solid #d7e1d5;
+            font-size: 0.85rem;
+            text-align: center;
+            color: #999;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="report-header text-center">
+        <h2 class="fw-bold mb-0">{{ translate("PhytoSync Analysis Report") }}</h2>
+        <p class="text-muted">{{ translate("AI-Powered Smart Farming Assistant") }}</p>
+        <p>{{ translate("Date and Time:") }} <strong>{{ report_date }}</strong> | {{ translate("Report ID:") }} <strong>{{ report_id }}</strong></p>
+    </div>
+
+    <div class="prediction-box mb-3 text-center">
+        <p class="text-muted mb-0 fw-bold">{{ translate("TOP RECOMMENDATION") }}</p>
+        <h1 class="crop-title fw-bold">{{ result.crop_name }}</h1>
+        
+        <table style="width: 100%; margin-top: 15px; border: none; border-collapse: collapse;">
+            <tr>
+                <td style="width: 33.3%; text-align: center; border: none; padding: 10px;">
+                    <span class="text-muted d-block">{{ translate("Confidence Score") }}</span>
+                    <strong class="text-success fs-5">{{ translate(result.match_percentage|string + "% Match") }}</strong>
+                </td>
+                <td style="width: 33.3%; text-align: center; border: none; padding: 10px;">
+                    <span class="text-muted d-block">{{ translate("Harvest Time") }}</span>
+                    <strong class="text-dark fs-5">{{ translate(result.harvest_duration) }}</strong>
+                </td>
+                <td style="width: 33.3%; text-align: center; border: none; padding: 10px;">
+                    <span class="text-muted d-block">{{ translate("Seasonal Water Needs") }}</span>
+                    <strong class="text-dark fs-5">{{ result.water_requirement }}</strong>
+                </td>
+            </tr>
+        </table>
+    </div>
+
+    <h3 class="section-title">{{ translate("Soil & Climate Profile Analyzed") }}</h3>
+    <table class="data-table">
+        <tbody>
+            <tr>
+                <th>{{ translate("Soil Type") }}</th>
+                <td>{{ inputs.soil_type }}</td>
+            </tr>
+            <tr>
+                <th>{{ translate("Nitrogen (N)") }}</th>
+                <td>{{ inputs.n }} kg/ha</td>
+            </tr>
+            <tr>
+                <th>{{ translate("Phosphorus (P)") }}</th>
+                <td>{{ inputs.p }} kg/ha</td>
+            </tr>
+            <tr>
+                <th>{{ translate("Potassium (K)") }}</th>
+                <td>{{ inputs.k }} kg/ha</td>
+            </tr>
+            <tr>
+                <th>{{ translate("Soil pH") }}</th>
+                <td>{{ inputs.ph }}</td>
+            </tr>
+            <tr>
+                <th>{{ translate("Avg. Temperature") }}</th>
+                <td>{{ inputs.temp }} °C</td>
+            </tr>
+            <tr>
+                <th>{{ translate("Avg. Humidity") }}</th>
+                <td>{{ inputs.humidity }} %</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <h3 class="section-title mt-4">{{ translate("Fertilizer & Action Plan") }}</h3>
+    <ul class="fert-list">
+        {% for rec in result.recommendations %}
+        <li>&#9658; {{ translate(rec) }}</li>
+        {% else %}
+        <li>{{ translate("No specific fertilizer recommendations generated. Soil conditions appear optimal.") }}</li>
+        {% endfor %}
+    </ul>
+
+    <div class="footer">
+        <p>
+            <strong>{{ translate("Disclaimer:") }}</strong> {{ translate("This report is generated by an AI model based on the inputs provided. It is intended as a decision-support tool and should not replace on-ground verification by local agricultural experts.") }}
+        </p>
+        <p>{{ translate("© PhytoSync. All rights reserved.") }} {{ current_year }}</p>
+    </div>
+
+</body>
+</html>

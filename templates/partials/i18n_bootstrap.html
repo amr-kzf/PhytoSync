@@ -1,0 +1,7 @@
+<script>
+    window.PHYTOSYNC_I18N = {
+        language: {{ site_language|tojson }},
+        translations: {{ language_translations|tojson }}
+    };
+</script>
+<script src="{{ url_for('static', filename='js/i18n.js') }}"></script>

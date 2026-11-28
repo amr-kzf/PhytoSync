@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="{{ site_language }}" dir="{{ 'rtl' if site_language == 'ar' else 'ltr' }}">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OTP Verification | PhytoSync</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600&family=Fira+Sans:wght@400;500;600;700&family=Noto+Sans+Arabic:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/verify_otp_style.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/phyto_redesign.css') }}">
+
+    <!-- Tailwind CSS (CDN for standalone UI) -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#286543',
+                        emerald: {
+                            50: '#F1F6EF', 100: '#E5EEE2', 200: '#CFDFCA',
+                            300: '#B1CBAA', 400: '#87AA83', 500: '#5D8A61',
+                            600: '#286543', 700: '#205138', 800: '#19412F',
+                            900: '#143427', 950: '#0E251C'
+                        },
+                        teal: {
+                            50: '#EDF5F1', 100: '#DDEBE3', 200: '#BED8C9',
+                            300: '#99BEAA', 400: '#6E9F86', 500: '#4C8068',
+                            600: '#3D6F58', 700: '#315A49', 800: '#27483B',
+                            900: '#203B32', 950: '#152720'
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Fira Sans', 'sans-serif'],
+                        display: ['Fira Sans', 'sans-serif'],
+                        mono: ['Fira Code', 'monospace']
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+
+<body class="otp-page bg-gray-50 flex items-center justify-center min-h-screen relative overflow-hidden font-sans">
+    {% include "partials/standalone_language_switcher.html" %}
+
+    <div
+        class="otp-card bg-white rounded-[2.5rem] shadow-[0_20px_60px_rgba(0,0,0,0.05)] border border-gray-100 p-8 sm:p-12 relative overflow-hidden max-w-[420px] w-full z-10 m-4">
+        <!-- Abstract card decoration -->
+        <div class="absolute top-0 left-0 right-0 h-2 bg-gradient-to-r from-emerald-500 to-teal-500"></div>
+
+        <div class="text-center mb-8">
+            <h3 class="font-display font-black text-3xl text-gray-900 tracking-tight mb-2">PhytoSync</h3>
+            <p class="font-bold text-gray-900 mb-1">Email Verification</p>
+            <p class="text-xs font-semibold text-gray-500">
+                Enter the 6-digit OTP sent to your email
+            </p>
+        </div>
+
+        {% if error %}
+        <div
+            class="bg-red-50 border border-red-200 text-red-600 rounded-xl p-3 text-sm font-bold text-center mb-6 shadow-sm">
+            {{ error }}
+        </div>
+        {% endif %}
+
+        <form method="POST" class="space-y-6">
+            <div class="mb-4">
+                <input type="text" name="otp"
+                    class="w-full bg-gray-50 border-2 border-gray-200 focus:border-emerald-500 focus:ring-4 focus:ring-emerald-500/20 text-gray-900 text-center font-black text-2xl tracking-[0.5em] rounded-2xl p-4 outline-none transition-all placeholder-gray-300"
+                    placeholder="●●●●●●" maxlength="6" required>
+            </div>
+
+            <button type="submit"
+                class="w-full bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-sm py-4 rounded-2xl shadow-[0_8px_20px_rgba(16,185,129,0.3)] hover:-translate-y-0.5 transition-all">
+                Verify OTP
+            </button>
+        </form>
+
+        <div class="text-center mt-8 pt-6 border-t border-gray-100">
+            <p class="text-xs font-semibold text-gray-400 mb-2">Didn't receive the OTP?</p>
+            <a href="{{ url_for('resend_otp', user_id=user_id) }}"
+                class="font-bold text-sm text-emerald-600 hover:text-emerald-700 transition-colors">
+                Resend OTP
+            </a>
+        </div>
+    </div>
+
+    {% include "partials/i18n_bootstrap.html" %}
+</body>
+
+</html>
